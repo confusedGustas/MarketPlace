@@ -36,7 +36,7 @@ public class JwtService {
                 .claims(extractClaims)
                 .subject(userDetails.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 30000))
+                .expiration(new Date(System.currentTimeMillis() + 1800000))
                 .signWith(getSecret())
                 .compact();
     }
@@ -44,7 +44,7 @@ public class JwtService {
     public RefreshToken generateRefreshToken(UserDetails userDetails){
         RefreshToken refreshToken = new RefreshToken();
         refreshToken.setUser(userRepository.findByUsername(userDetails.getUsername()).orElse(null));
-        refreshToken.setExpiration(Instant.now().plusMillis(60000));
+        refreshToken.setExpiration(Instant.now().plusMillis(3600000));
         refreshToken.setToken(UUID.randomUUID().toString());
 
         return refreshToken;
