@@ -43,9 +43,12 @@ Make sure you have the following tools installed before setting up the applicati
 
     ```bash
     mvn spring-boot:run
+    cd frontend
+    npm install
+    ng serve
     ```
 
-   The application will start on `http://localhost:8080`.
+   The application will start on `http://localhost:8080` and `http://localhost:4200`
 
 ## Usage
 
